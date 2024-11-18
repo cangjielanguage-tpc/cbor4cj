@@ -25,7 +25,7 @@ public class Example06Test {
 
     @TestCase
     public func shouldEncode() {
-        var byteOutputStream = ByteBuffer();
+        var byteOutputStream = ByteArrayStream();
         var encoder = CborEncoder(byteOutputStream);
         encoder.encode(VALUE);
         @Assert(ENCODED_VALUE, byteOutputStream.bytes())
@@ -33,7 +33,7 @@ public class Example06Test {
 
     @TestCase
     public func shouldDecode() {
-        var inputStream = ByteBuffer();
+        var inputStream = ByteArrayStream();
         inputStream.write(ENCODED_VALUE)
         var decoder = CborDecoder(inputStream);
         var dataItems = decoder.decode();

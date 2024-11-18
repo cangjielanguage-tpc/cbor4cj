@@ -8,7 +8,7 @@ import cbor4cj.*
 
 @Test
 public class CborEncoderTest {
-    private var encoder: CborEncoder = CborEncoder(ByteBuffer())
+    private var encoder: CborEncoder = CborEncoder(ByteArrayStream())
 
     @TestCase
     public func shouldNotEncodeInvalidMajorType(): Unit {

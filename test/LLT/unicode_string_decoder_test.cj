@@ -11,11 +11,11 @@ public class UnicodeStringDecoderTest {
 
     @TestCase
     public func shouldDecodeChunkedUnicodeString(): Unit {
-        let baos = ByteBuffer()
+        let baos = ByteArrayStream()
         let encoder = CborEncoder(baos)
         encoder.encode(CborBuilder().startString().add("foo").add("bar").end().getOrThrow().build())
         let encodedBytes: Array<UInt8> = baos.bytes()
-        let bais = ByteBuffer()
+        let bais = ByteArrayStream()
         bais.write(encodedBytes)
         let decoder = CborDecoder(bais)
         let dataItems = decoder.decode()

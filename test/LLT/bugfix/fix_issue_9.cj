@@ -11,8 +11,8 @@ import std.collection.*
 public class fix2 {
     @TestCase
     public func fix2() {   
-        var byteOutputStream =  ByteBuffer();  
-        var inputStream = ByteBuffer(); 
+        var byteOutputStream =  ByteArrayStream();  
+        var inputStream = ByteArrayStream(); 
         let builder = CborBuilder()
         let dataItems = builder.startByteString().add(Array<UInt8>())
             .end().getOrThrow()

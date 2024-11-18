@@ -16,11 +16,11 @@ public class UnsignedIntegerDecoderTest {
         var i = 1
         while (i < 64) {
             value = value<<1
-            let baos = ByteBuffer()
+            let baos = ByteArrayStream()
             let encoder = CborEncoder(baos)
             encoder.encode(CborBuilder().add(value).build())
             let encodedBytes: Array<UInt8> = baos.bytes()
-            let bais = ByteBuffer()
+            let bais = ByteArrayStream()
             bais.write(encodedBytes)
             let decoder = CborDecoder(bais)
             let dataItems = decoder.decode()

@@ -4,7 +4,7 @@
 package cbor4cj
 
 import std.io.InputStream
-import std.io.ByteBuffer
+import std.io.ByteArrayStream
 
 public class UnicodeStringDecoder <: AbstractDecoder<UnicodeString> {
     public init(decoder: CborDecoder, inputStream: InputStream) {
@@ -27,7 +27,7 @@ public class UnicodeStringDecoder <: AbstractDecoder<UnicodeString> {
     }
 
     private func decodeInfinitiveLength(): UnicodeString {
-        let bytes = ByteBuffer()
+        let bytes = ByteArrayStream()
         while (true) {
             let dataItem = decoder.getOrThrow().decodeNext()
             if (dataItem.isNone()) {
@@ -48,7 +48,7 @@ public class UnicodeStringDecoder <: AbstractDecoder<UnicodeString> {
     }
 
     private func decodeFixedLength(length: Int64): UnicodeString {
-        let bytes = ByteBuffer(length)
+        let bytes = ByteArrayStream(length)
         var i = 0
         while (i < length) {
             bytes.write(UInt8(nextSymbol()))

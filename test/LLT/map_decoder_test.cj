@@ -53,7 +53,7 @@ public class MapDecoderTest {
     @TestCase
     public func shouldThrowOnDuplicateKeyIfEnabled(): Unit {
         let bytes: Array<UInt8> = [162, 1, 1, 1, 2]
-        let bais = ByteBuffer()
+        let bais = ByteArrayStream()
         bais.write(bytes)
         let decoder = CborDecoder(bais)
         decoder.setRejectDuplicateKeys(true)
@@ -68,7 +68,7 @@ public class MapDecoderTest {
     @TestCase
     public func shouldThrowInDuplicateKeyInIndefiniteLengthMapIfEnabled(): Unit {
         let bytes: Array<UInt8> = [191, 1, 1, 1, 2, 255]
-        let bais = ByteBuffer()
+        let bais = ByteArrayStream()
         bais.write(bytes)
         let decoder = CborDecoder(bais)
         decoder.setRejectDuplicateKeys(true)

@@ -11,8 +11,8 @@ import std.collection.*
 public class fix4 {
     @TestCase
     public func fix4() {   
-        var byteOutputStream =  ByteBuffer();  
-        var inputStream = ByteBuffer(); 
+        var byteOutputStream =  ByteArrayStream();  
+        var inputStream = ByteArrayStream(); 
         let builder = CborBuilder()
         var dataItems = (builder.addMap().put(-1,Float64.Min).end()).getOrThrow().build()
         var d : CborMap = (dataItems.first.getOrThrow() as CborMap).getOrThrow()

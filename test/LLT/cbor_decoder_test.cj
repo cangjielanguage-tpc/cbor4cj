@@ -32,7 +32,7 @@ public class CborDecoderTest {
 
     @TestCase
     public func shouldSetAutoDecodeInfinitiveMaps(): Unit {
-        let inputStream: ByteBuffer = ByteBuffer()
+        let inputStream: ByteArrayStream = ByteArrayStream()
         inputStream.write([0, 1, 2])
         let cborDecoder = CborDecoder(inputStream)
         @Assert(cborDecoder.isAutoDecodeInfinitiveMaps())
@@ -42,7 +42,7 @@ public class CborDecoderTest {
 
     @TestCase
     public func shouldSetAutoDecodeRationalNumbers(): Unit {
-        let inputStream: ByteBuffer = ByteBuffer()
+        let inputStream: ByteArrayStream = ByteArrayStream()
         inputStream.write([0, 1, 2])
         let cborDecoder = CborDecoder(inputStream)
         @Assert(cborDecoder.isAutoDecodeRationalNumbers())
@@ -52,7 +52,7 @@ public class CborDecoderTest {
 
     @TestCase
     public func shouldSetAutoDecodeLanguageTaggedStrings(): Unit {
-        let inputStream: ByteBuffer = ByteBuffer()
+        let inputStream: ByteArrayStream = ByteArrayStream()
         inputStream.write([0, 1, 2])
         let cborDecoder = CborDecoder(inputStream)
         @Assert(cborDecoder.isAutoDecodeLanguageTaggedStrings())
@@ -63,10 +63,10 @@ public class CborDecoderTest {
     @TestCase
     public func shouldThrowOnRationalNumberDecode1(): Unit {
         let items = CborBuilder().addTag(30).add(true).build()
-        let baos = ByteBuffer()
+        let baos = ByteArrayStream()
         let encoder = CborEncoder(baos)
         encoder.encode(items)
-        let bais = ByteBuffer()
+        let bais = ByteArrayStream()
         bais.write(baos.bytes())
         let decoder = CborDecoder(bais)
         try {
@@ -80,10 +80,10 @@ public class CborDecoderTest {
     @TestCase
     public func shouldThrowOnRationalNumberDecode2(): Unit {
         let items = CborBuilder().addTag(30).addArray().add(true).end().getOrThrow().build()
-        let baos = ByteBuffer()
+        let baos = ByteArrayStream()
         let encoder = CborEncoder(baos)
         encoder.encode(items)
-        let bais = ByteBuffer()
+        let bais = ByteArrayStream()
         bais.write(baos.bytes())
         let decoder = CborDecoder(bais)
         try {
@@ -97,10 +97,10 @@ public class CborDecoderTest {
     @TestCase
     public func shouldThrowOnRationalNumberDecode3(): Unit {
         let items = CborBuilder().addTag(30).addArray().add(true).add(true).end().getOrThrow().build()
-        let baos = ByteBuffer()
+        let baos = ByteArrayStream()
         let encoder = CborEncoder(baos)
         encoder.encode(items)
-        let bais = ByteBuffer()
+        let bais = ByteArrayStream()
         bais.write(baos.bytes())
         let decoder = CborDecoder(bais)
         try {
@@ -114,10 +114,10 @@ public class CborDecoderTest {
     @TestCase
     public func shouldThrowOnRationalNumberDecode4(): Unit {
         let items = CborBuilder().addTag(30).addArray().add(1).add(true).end().getOrThrow().build()
-        let baos = ByteBuffer()
+        let baos = ByteArrayStream()
         let encoder = CborEncoder(baos)
         encoder.encode(items)
-        let bais = ByteBuffer()
+        let bais = ByteArrayStream()
         bais.write(baos.bytes())
         let decoder = CborDecoder(bais)
         try {
@@ -131,10 +131,10 @@ public class CborDecoderTest {
     @TestCase
     public func shouldDecodeRationalNumber(): Unit {
         let items = CborBuilder().addTag(30).addArray().add(1).add(2).end().getOrThrow().build()
-        let baos = ByteBuffer()
+        let baos = ByteArrayStream()
         let encoder = CborEncoder(baos)
         encoder.encode(items)
-        let bais = ByteBuffer()
+        let bais = ByteArrayStream()
         bais.write(baos.bytes())
         let decoder = CborDecoder(bais)
         var ddd = RationalNumber(UnsignedInteger(1), UnsignedInteger(2))
@@ -156,10 +156,10 @@ public class CborDecoderTest {
     @TestCase
     public func shouldDecodeTaggedRationalNumber(): Unit {
         let items = CborBuilder().addTag(1).addTag(30).addArray().add(1).add(2).end().getOrThrow().build()
-        let baos = ByteBuffer()
+        let baos = ByteArrayStream()
         let encoder = CborEncoder(baos)
         encoder.encode(items)
-        let bais = ByteBuffer()
+        let bais = ByteArrayStream()
         bais.write(baos.bytes())
         let decoder = CborDecoder(bais)
         let expected = RationalNumber(UnsignedInteger(1), UnsignedInteger(2))

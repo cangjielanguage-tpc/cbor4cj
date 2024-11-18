@@ -11,7 +11,7 @@ public class ReadMeTest {
     @TestCase
     public func Example01Test() {
         var except: Array<Byte> = [100, 116, 101, 120, 116, 25, 4, 210, 65, 16, 130, 1, 100, 116, 101, 120, 116]
-        let baos = ByteBuffer();
+        let baos = ByteArrayStream();
         CborEncoder(baos).encode(
             CborBuilder().add("text") // add string
                 .add(1234) // add integer

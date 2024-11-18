@@ -18,9 +18,9 @@ public class MapBuilderTest2 {
     @TestCase
     public func shouldDecodeZero() {
         var dataItems = [1];
-        var outputStream = ByteBuffer();
+        var outputStream = ByteArrayStream();
         CborEncoder(outputStream).encode(CborBuilder().add(1234).build());
-        var data = ByteBuffer()
+        var data = ByteArrayStream()
         data.write(outputStream.bytes())
         CborDecoder(data).decode(impleDataItemListener())
     }
@@ -31,10 +31,10 @@ public class MapBuilderTest2 {
             .addTag(38)
             .addArray().add("en").add("string").end().getOrThrow()
             .build();
-        var baos = ByteBuffer();
+        var baos = ByteArrayStream();
         var encoder = CborEncoder(baos);
         encoder.encode(items);
-        var bais = ByteBuffer();
+        var bais = ByteArrayStream();
         bais.write(baos.bytes())
         var decoder = CborDecoder(bais);
         var item = decoder.decodeNext();

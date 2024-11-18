@@ -15,14 +15,14 @@ public class AbstractDoublePrecisionFloatTest {
 
     public func shouldEncode() {
         var dataItems = CborBuilder().add(value).build()
-        var byteOutputStream = ByteBuffer()
+        var byteOutputStream = ByteArrayStream()
         var encoder = CborEncoder(byteOutputStream)
         encoder.encode(dataItems.first.getOrThrow())
         @Assert(encodedValue, byteOutputStream.bytes())
     }
 
     public func shouldDecode() {
-        var inputStream = ByteBuffer();
+        var inputStream = ByteArrayStream();
         inputStream.write(encodedValue)
         var decoder = CborDecoder(inputStream);
         var dataItem = decoder.decodeNext().getOrThrow()

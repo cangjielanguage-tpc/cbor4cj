@@ -4,7 +4,7 @@
 import std.unittest.*
 import std.unittest.testmacro.*
 import std.io.InputStream
-import std.io.ByteBuffer
+import std.io.ByteArrayStream
 import cbor4cj.*
 import std.math.numeric.BigInt
 
@@ -14,7 +14,7 @@ public class AbstractDecoderTest {
 
     @TestCase
     public func shouldThrowExceptionOnUnexpectedEndOfStream(): Unit {
-        let inputStream: InputStream = ByteBuffer()
+        let inputStream: InputStream = ByteArrayStream()
         try {
             AbstractDecoderTest_TestableAbstractDecoder(this, inputStream).callNextSymbol()
         } catch (e: CborException) {
@@ -25,14 +25,14 @@ public class AbstractDecoderTest {
 
     @TestCase
     public func shouldDecodeInfinityLength(): Unit {
-        let inputStream: InputStream = ByteBuffer()
+        let inputStream: InputStream = ByteArrayStream()
         let decoder = AbstractDecoderTest_TestableAbstractDecoder(this, inputStream)
         @Assert(BigInt(-1), decoder.callGetLengthAsBigInteger(31))
     }
 
     @TestCase
     public func shouldThrowExceptionOnReserved1(): Unit {
-        let inputStream: InputStream = ByteBuffer()
+        let inputStream: InputStream = ByteArrayStream()
         try {
             AbstractDecoderTest_TestableAbstractDecoder(this, inputStream).callGetLengthAsBigInteger(28)
         } catch (e: CborException) {
@@ -43,7 +43,7 @@ public class AbstractDecoderTest {
 
     @TestCase
     public func shouldThrowExceptionOnReserved2(): Unit {
-        let inputStream: InputStream = ByteBuffer()
+        let inputStream: InputStream = ByteArrayStream()
         try {
             AbstractDecoderTest_TestableAbstractDecoder(this, inputStream).callGetLengthAsBigInteger(29)
         } catch (e: CborException) {
@@ -54,7 +54,7 @@ public class AbstractDecoderTest {
 
     @TestCase
     public func shouldThrowExceptionOnReserved3(): Unit {
-        let inputStream: InputStream = ByteBuffer()
+        let inputStream: InputStream = ByteArrayStream()
         try {
             AbstractDecoderTest_TestableAbstractDecoder(this, inputStream).callGetLengthAsBigInteger(30)
         } catch (e: CborException) {
@@ -65,7 +65,7 @@ public class AbstractDecoderTest {
 
     @TestCase
     public func shouldThrowExceptionOnReserved4(): Unit {
-        let inputStream: InputStream = ByteBuffer()
+        let inputStream: InputStream = ByteArrayStream()
         try {
             AbstractDecoderTest_TestableAbstractDecoder(this, inputStream).callGetLength(28)
         } catch (e: CborException) {
@@ -76,7 +76,7 @@ public class AbstractDecoderTest {
 
     @TestCase
     public func shouldThrowExceptionOnReserved5(): Unit {
-        let inputStream: InputStream = ByteBuffer()
+        let inputStream: InputStream = ByteArrayStream()
         try {
             AbstractDecoderTest_TestableAbstractDecoder(this, inputStream).callGetLength(29)
         } catch (e: CborException) {
@@ -87,7 +87,7 @@ public class AbstractDecoderTest {
 
     @TestCase
     public func shouldThrowExceptionOnReserved6(): Unit {
-        let inputStream: InputStream = ByteBuffer()
+        let inputStream: InputStream = ByteArrayStream()
         try {
             AbstractDecoderTest_TestableAbstractDecoder(this, inputStream).callGetLength(30)
         } catch (e: CborException) {
@@ -98,7 +98,7 @@ public class AbstractDecoderTest {
 
     @TestCase
     public func shouldDecodeEightBytesLengthToLong(): Unit {
-        let inputStream: ByteBuffer = ByteBuffer()
+        let inputStream: ByteArrayStream = ByteArrayStream()
         inputStream.write([1, 1, 1, 1, 1, 1, 1, 1])
         let value = AbstractDecoderTest_TestableAbstractDecoder(this, inputStream).callGetLength(27)
         @Assert(72340172838076673, value)

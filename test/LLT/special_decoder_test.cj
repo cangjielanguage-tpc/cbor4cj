@@ -10,7 +10,7 @@ import cbor4cj.*
 public class SpecialDecoderTest {
     @TestCase
     public func shouldThrowExceptionOnUnallocated(): Unit {
-        let decoder = SpecialDecoder(None, ByteBuffer())
+        let decoder = SpecialDecoder(None, ByteArrayStream())
         try {
             decoder.decode(28)
         } catch (e: CborException) {

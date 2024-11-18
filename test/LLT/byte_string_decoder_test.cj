@@ -4,20 +4,20 @@
 import std.unittest.*
 import std.unittest.testmacro.*
 import std.collection.ArrayList
-import std.io.ByteBuffer
+import std.io.ByteArrayStream
 import cbor4cj.*
 
 @Test
 public class ByteStringDecoderTest {
     @TestCase
     public func shouldDecodeChunkedByteString(): Unit {
-        let baos = ByteBuffer()
+        let baos = ByteArrayStream()
         let encoder = CborEncoder(baos)
         encoder.encode(
             CborBuilder().startByteString().add('\u{0000}'.toString().toArray()).add([16]).add([19]).end().getOrThrow().
             build())
         let encodedBytes: Array<UInt8> = baos.bytes()
-        let bais = ByteBuffer()
+        let bais = ByteArrayStream()
         bais.write(encodedBytes)
         let decoder = CborDecoder(bais)
         let dataItems = decoder.decode()
@@ -27,11 +27,11 @@ public class ByteStringDecoderTest {
 
     @TestCase
     public func shouldDecodeByteString1K(): Unit {
-        let baos = ByteBuffer()
+        let baos = ByteArrayStream()
         let encoder = CborEncoder(baos)
         encoder.encode(CborBuilder().add(Array<UInt8>(1024) {_ => 0}).build())
         let encodedBytes: Array<UInt8> = baos.bytes()
-        let bais = ByteBuffer()
+        let bais = ByteArrayStream()
         bais.write(encodedBytes)
         let decoder = CborDecoder(bais)
         let dataItems = decoder.decode()
@@ -41,11 +41,11 @@ public class ByteStringDecoderTest {
 
     @TestCase
     public func shouldDecodeByteString1M(): Unit {
-        let baos = ByteBuffer()
+        let baos = ByteArrayStream()
         let encoder = CborEncoder(baos)
         encoder.encode(CborBuilder().add(Array<UInt8>(Int64(1024 * 1024)) {_ => 0}).build())
         let encodedBytes: Array<UInt8> = baos.bytes()
-        let bais = ByteBuffer()
+        let bais = ByteArrayStream()
         bais.write(encodedBytes)
         let decoder = CborDecoder(bais)
         let dataItems = decoder.decode()

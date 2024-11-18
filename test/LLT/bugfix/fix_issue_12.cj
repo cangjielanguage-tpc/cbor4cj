@@ -11,8 +11,8 @@ import std.collection.*
 public class fix5 {
     @TestCase
     public func fix5() {   
-        var byteOutputStream = ByteBuffer();
-        var inputStream = ByteBuffer();
+        var byteOutputStream = ByteArrayStream();
+        var inputStream = ByteArrayStream();
         let builder = CborBuilder()
         var arr: Array<Byte> = []
         var dataItems = builder.add(arr).build()

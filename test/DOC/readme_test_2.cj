@@ -13,7 +13,7 @@ public class ReadMeTest2 {
     @TestCase
     public func Example02Test() {
         var except: Array<Byte> = [100, 116, 101, 120, 116, 25, 4, 210, 65, 16, 130, 1, 100, 116, 101, 120, 116]
-        let baos = ByteBuffer();
+        let baos = ByteArrayStream();
         baos.write(except)
         var dataItems: LinkedList<DataItem> = CborDecoder(baos).decode();
         @Assert(dataItems.size,4)

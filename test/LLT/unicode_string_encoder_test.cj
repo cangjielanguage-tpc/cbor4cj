@@ -11,7 +11,7 @@ public class UnicodeStringEncoderTest {
 
     @TestCase
     public func shouldEncodeChunkedString(): Unit {
-        let byteArrayOutputStream = ByteBuffer()
+        let byteArrayOutputStream = ByteArrayStream()
         let dataItems = CborBuilder().startString("test").end().getOrThrow().build()
         CborEncoder(byteArrayOutputStream).encode(dataItems)
     }

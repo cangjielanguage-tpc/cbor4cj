@@ -11,7 +11,7 @@ import std.math.numeric.BigInt
 public class ReadMeTest3 {
     @TestCase
     public func Example03Test() {
-        let baos = ByteBuffer();
+        let baos = ByteArrayStream();
         CborEncoder(baos).encode(CborBuilder().add(666).add("666").build());
         CborDecoder(baos).decode(impleDataItemListener())
     }

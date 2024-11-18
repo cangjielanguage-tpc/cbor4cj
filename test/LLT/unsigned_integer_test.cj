@@ -60,7 +60,7 @@ public class UnsignedIntegerTest {
     }
 
     protected func shouldEncodeAndDecode(message: String, dataItem: DataItem) {
-        var byteArrayOutputStream = ByteBuffer();
+        var byteArrayOutputStream = ByteArrayStream();
         var encoder = CborEncoder(byteArrayOutputStream);
         encoder.encode(dataItem);
         var bytes = byteArrayOutputStream.bytes();

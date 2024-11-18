@@ -11,7 +11,7 @@ public class MapEncoderTest {
 
     @TestCase
     public func shouldEncodeMap(): Unit {
-        let byteArrayOutputStream = ByteBuffer()
+        let byteArrayOutputStream = ByteArrayStream()
         let dataItems = CborBuilder().addMap().put(1, true).put(".", true).put(3, true).put("..", true).put(2, true).put("...", true).end().getOrThrow().build()
         CborEncoder(byteArrayOutputStream).encode(dataItems)
     }

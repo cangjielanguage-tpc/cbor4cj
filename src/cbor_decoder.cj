@@ -7,7 +7,7 @@ import std.collection.LinkedList
 import std.collection.ArrayList
 import std.io.IOException
 import std.io.InputStream
-import std.io.ByteBuffer
+import std.io.ByteArrayStream
 
 /**
  * Decoder for the CBOR format based.
@@ -70,7 +70,7 @@ public class CborDecoder {
      *             if decoding failed
      */
     public static func decodeStatic(bytes: Array<UInt8>): LinkedList<DataItem> {
-        var stream = ByteBuffer()
+        var stream = ByteArrayStream()
         stream.write(bytes)
         return CborDecoder(stream).decode()
     }
@@ -122,7 +122,7 @@ public class CborDecoder {
         let symbol: Int32
         var readbyte: Int64 = 0
         try {
-            var arr = Array<UInt8>(1, repeat: 0)
+            var arr = Array<UInt8>(1, item: 0)
             readbyte = inputStream.read(arr)
             symbol = Int32(arr[0])
         } catch (ioException: IOException) {
