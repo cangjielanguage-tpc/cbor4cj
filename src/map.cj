@@ -22,8 +22,8 @@ public class CborMap <: ChunkableDataItem {
     }
 
     public func put(key: DataItem, value: DataItem): CborMap {
-        if (map.add(key, value).isNone()) {
-            keys.addLast(key)
+        if (map.put(key, value).isNone()) {
+            keys.append(key)
         }
         return this
     }

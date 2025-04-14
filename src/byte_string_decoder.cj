@@ -3,7 +3,7 @@
  */
 package cbor4cj
 
-import std.io.ByteBuffer
+import std.io.ByteArrayStream
 import std.io.InputStream
 
 public class ByteStringDecoder <: AbstractDecoder<ByteString> {
@@ -27,7 +27,7 @@ public class ByteStringDecoder <: AbstractDecoder<ByteString> {
     }
 
     private func decodeInfinitiveLength(): ByteString {
-        let bytes = ByteBuffer()
+        let bytes = ByteArrayStream()
         while (true) {
             let dataItem = decoder.getOrThrow().decodeNext()
             if (dataItem.isNone()) {
@@ -50,7 +50,7 @@ public class ByteStringDecoder <: AbstractDecoder<ByteString> {
     }
 
     private func decodeFixedLength(length: Int64): ByteString {
-        let bytes = ByteBuffer(length)
+        let bytes = ByteArrayStream(length)
         var i = 0
         while (i < length) {
             bytes.write(UInt8(nextSymbol()))

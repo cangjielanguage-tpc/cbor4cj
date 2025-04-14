@@ -23,7 +23,7 @@ public abstract class AbstractDecoder<T> {
 
     protected func nextSymbol(): Int32 {
         try {
-            var arr = Array<UInt8>(1, repeat: 0)
+            var arr = Array<UInt8>(1, item: 0)
             var readsize = inputStream.read(arr)
             let symbol = Int32(arr[0])
             if (readsize == 0) {

@@ -24,7 +24,7 @@ public class CborBuilder <: AbstractBuilder<CborBuilder> {
     }
 
     public func add(dataItem: DataItem): CborBuilder {
-        dataItems.addLast(dataItem)
+        dataItems.append(dataItem)
         return this
     }
 

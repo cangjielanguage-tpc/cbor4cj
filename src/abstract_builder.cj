@@ -3,7 +3,7 @@
  */
 package cbor4cj
 
-import std.io.ByteBuffer
+import std.io.ByteArrayStream
 import std.io.InputStream
 import std.io.OutputStream
 import std.math.numeric.BigInt
@@ -73,14 +73,14 @@ public abstract class AbstractBuilder<T> {
 
     private func isHalfPrecisionEnough(value: Float32): Bool {
         try {
-            let outputStream = ByteBuffer()
+            let outputStream = ByteArrayStream()
             let encoder = getHalfPrecisionFloatEncoder(outputStream)
             encoder.encode(HalfPrecisionFloat(value))
             let bytes: Array<UInt8> = outputStream.bytes()
-            let inputStream = ByteBuffer()
+            let inputStream = ByteArrayStream()
             inputStream.write(bytes)
             let decoder = getHalfPrecisionFloatDecoder(inputStream)
-            let arr = Array<Byte>(1, repeat: 0)
+            let arr = Array<Byte>(1, item: 0)
             if (inputStream.read(arr) == -1) {
                 throw CborException("unexpected end of stream")
             }
