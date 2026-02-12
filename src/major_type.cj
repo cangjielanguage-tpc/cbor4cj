@@ -1,27 +1,27 @@
 /*
  * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights reserved.
  */
-package cbor4cj
+package cangjie_tpc::cbor4cj
 
 
 public class MajorType <: Enum<MajorType> {
-    public static let INVALID = MajorType("INVALID", 0, -1)
+    public static let INVALID: MajorType = MajorType("INVALID", 0, -1)
 
-    public static let UNSIGNED_INTEGER = MajorType("UNSIGNED_INTEGER", 1, 0)
+    public static let UNSIGNED_INTEGER: MajorType = MajorType("UNSIGNED_INTEGER", 1, 0)
 
-    public static let NEGATIVE_INTEGER = MajorType("NEGATIVE_INTEGER", 2, 1)
+    public static let NEGATIVE_INTEGER: MajorType = MajorType("NEGATIVE_INTEGER", 2, 1)
 
-    public static let BYTE_STRING = MajorType("BYTE_STRING", 3, 2)
+    public static let BYTE_STRING: MajorType = MajorType("BYTE_STRING", 3, 2)
 
-    public static let UNICODE_STRING = MajorType("UNICODE_STRING", 4, 3)
+    public static let UNICODE_STRING: MajorType = MajorType("UNICODE_STRING", 4, 3)
 
-    public static let ARRAY = MajorType("ARRAY", 5, 4)
+    public static let ARRAY: MajorType = MajorType("ARRAY", 5, 4)
 
-    public static let MAP = MajorType("MAP", 6, 5)
+    public static let MAP: MajorType = MajorType("MAP", 6, 5)
 
-    public static let TAG = MajorType("TAG", 7, 6)
+    public static let TAG: MajorType = MajorType("TAG", 7, 6)
 
-    public static let SPECIAL = MajorType("SPECIAL", 8, 7)
+    public static let SPECIAL: MajorType = MajorType("SPECIAL", 8, 7)
 
     private let value: Int32
 

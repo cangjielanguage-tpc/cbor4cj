@@ -1,10 +1,10 @@
 /*
  * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights reserved.
  */
-package cbor4cj
+package cangjie_tpc::cbor4cj
 
 public open class Special <: DataItem {
-    public static let BREAK = Special(SpecialType.BREAK)
+    public static let BREAK: Special = Special(SpecialType.BREAK)
 
     private let specialType: SpecialType
 

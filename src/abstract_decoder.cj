@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights reserved.
  */
-package cbor4cj
+package cangjie_tpc::cbor4cj
 
 import std.io.IOException
 import std.io.InputStream
@@ -27,7 +27,7 @@ public abstract class AbstractDecoder<T> {
             var readsize = inputStream.read(arr)
             let symbol = Int32(arr[0])
             if (readsize == 0) {
-                throw IOException("Unexpected end of stream")
+                throw Exception("Unexpected end of stream")
             }
             return Int32(symbol)
         } catch (ioException: IOException) {

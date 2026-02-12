@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights reserved.
  */
-package cbor4cj
+package cangjie_tpc::cbor4cj
 
 public class UnicodeStringBuilder<T> <: AbstractBuilder<T> where T <: AbstractBuilder<T> {
     public init(parent: T) {

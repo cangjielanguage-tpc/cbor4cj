@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights reserved.
  */
-package cbor4cj
+package cangjie_tpc::cbor4cj
 
 import std.io.ByteBuffer
 import std.io.readToEnd
@@ -75,11 +75,23 @@ extend CborMapKeyBytes <: Comparable<CborMapKeyBytes> {
     }
 
     public operator func >=(rhs: CborMapKeyBytes): Bool {
-        return compare(rhs) == Ordering.GT || compare(rhs) == Ordering.EQ
+        if (compare(rhs) == Ordering.GT) {
+            return true
+        }
+        if (compare(rhs) == Ordering.EQ) {
+            return true
+        }
+        return false
     }
 
     public operator func <=(rhs: CborMapKeyBytes): Bool {
-        return compare(rhs) == Ordering.LT || compare(rhs) == Ordering.EQ
+        if (compare(rhs) == Ordering.LT) {
+            return true
+        }
+        if (compare(rhs) == Ordering.EQ) {
+            return true
+        }
+        return false
     }
 
     public func compare(that: CborMapKeyBytes): Ordering {

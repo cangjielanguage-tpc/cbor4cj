@@ -1,20 +1,20 @@
 /*
  * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights reserved.
  */
-package cbor4cj
+package cangjie_tpc::cbor4cj
 
 public class SimpleValueType <: Enum<SimpleValueType> {
-    public static let FALSE = SimpleValueType("FALSE", 0, 20)
+    public static let FALSE: SimpleValueType = SimpleValueType("FALSE", 0, 20)
 
-    public static let TRUE = SimpleValueType("TRUE", 1, 21)
+    public static let TRUE: SimpleValueType = SimpleValueType("TRUE", 1, 21)
 
-    public static let NULL = SimpleValueType("NULL", 2, 22)
+    public static let NULL: SimpleValueType = SimpleValueType("NULL", 2, 22)
 
-    public static let UNDEFINED = SimpleValueType("UNDEFINED", 3, 23)
+    public static let UNDEFINED: SimpleValueType = SimpleValueType("UNDEFINED", 3, 23)
 
-    public static let RESERVED = SimpleValueType("RESERVED", 4, 0)
+    public static let RESERVED: SimpleValueType = SimpleValueType("RESERVED", 4, 0)
 
-    public static let UNALLOCATED = SimpleValueType("UNALLOCATED", 5, 0)
+    public static let UNALLOCATED: SimpleValueType = SimpleValueType("UNALLOCATED", 5, 0)
 
     private let value: Int32
 

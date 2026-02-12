@@ -1,24 +1,24 @@
 /*
  * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights reserved.
  */
-package cbor4cj
+package cangjie_tpc::cbor4cj
 
 import std.reflect.*
 
 public class AdditionalInformation <: Enum<AdditionalInformation>{
-    public static let DIRECT = AdditionalInformation("DIRECT", 0, 0)
+    public static let DIRECT: AdditionalInformation = AdditionalInformation("DIRECT", 0, 0)
 
-    public static let ONE_BYTE = AdditionalInformation("ONE_BYTE", 1, 24)
+    public static let ONE_BYTE: AdditionalInformation = AdditionalInformation("ONE_BYTE", 1, 24)
 
-    public static let TWO_BYTES = AdditionalInformation("TWO_BYTES", 2, 25)
+    public static let TWO_BYTES: AdditionalInformation = AdditionalInformation("TWO_BYTES", 2, 25)
 
-    public static let FOUR_BYTES = AdditionalInformation("FOUR_BYTES", 3, 26)
+    public static let FOUR_BYTES: AdditionalInformation = AdditionalInformation("FOUR_BYTES", 3, 26)
 
-    public static let EIGHT_BYTES = AdditionalInformation("EIGHT_BYTES", 4, 27)
+    public static let EIGHT_BYTES: AdditionalInformation = AdditionalInformation("EIGHT_BYTES", 4, 27)
 
-    public static let RESERVED = AdditionalInformation("RESERVED", 5, 28)
+    public static let RESERVED: AdditionalInformation = AdditionalInformation("RESERVED", 5, 28)
 
-    public static let INDEFINITE = AdditionalInformation("INDEFINITE", 6, 31)
+    public static let INDEFINITE: AdditionalInformation = AdditionalInformation("INDEFINITE", 6, 31)
 
     private let value: Int32
 

@@ -1,18 +1,18 @@
 /*
  * Copyright (c) Huawei Technologies Co., Ltd. 2024-2024. All rights reserved.
  */
-package cbor4cj
+package cangjie_tpc::cbor4cj
 
 public class SimpleValue <: Special {
     private let simpleValueType: SimpleValueType
 
-    public static let FALSE = SimpleValue(SimpleValueType.FALSE)
+    public static let FALSE: SimpleValue = SimpleValue(SimpleValueType.FALSE)
 
-    public static let TRUE = SimpleValue(SimpleValueType.TRUE)
+    public static let TRUE: SimpleValue = SimpleValue(SimpleValueType.TRUE)
 
-    public static let NULL = SimpleValue(SimpleValueType.NULL)
+    public static let NULL: SimpleValue = SimpleValue(SimpleValueType.NULL)
 
-    public static let UNDEFINED = SimpleValue(SimpleValueType.UNDEFINED)
+    public static let UNDEFINED: SimpleValue = SimpleValue(SimpleValueType.UNDEFINED)
 
     private let value: Int32
 

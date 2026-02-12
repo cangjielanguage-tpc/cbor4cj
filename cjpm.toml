@@ -2,31 +2,37 @@
   [target.aarch64-linux-ohos]
     compile-option = "-B \"${DEVECO_CANGJIE_HOME}/compiler/third_party/llvm/bin\" -B \"${DEVECO_CANGJIE_HOME}/musl/usr/lib/aarch64-linux-ohos\" -L \"${DEVECO_CANGJIE_HOME}/musl/usr/lib/aarch64-linux-ohos\" -L \"${DEVECO_CANGJIE_HOME}/build/linux_ohos_aarch64_llvm/openssl\" --sysroot \"${DEVECO_CANGJIE_HOME}/musl\""
     [target.aarch64-linux-ohos.bin-dependencies]
-      path-option = [ "${AARCH64_LIBS}", "${AARCH64_MACRO_LIBS}", "${CANGJIE_STDX_PATH}/linux_ohos_aarch64_llvm/dynamic/stdx" ]
+      path-option = [ "${AARCH64_LIBS}", "${AARCH64_MACRO_LIBS}"]
   [target.x86_64-linux-ohos]
     compile-option = "-B \"${DEVECO_CANGJIE_HOME}/compiler/third_party/llvm/bin\" -B \"${DEVECO_CANGJIE_HOME}/musl/usr/lib/x86_64-linux-ohos\" -L \"${DEVECO_CANGJIE_HOME}/musl/usr/lib/x86_64-linux-ohos\" -L \"${DEVECO_CANGJIE_HOME}/build/linux_ohos_x86_64_llvm/openssl\" --sysroot \"${DEVECO_CANGJIE_HOME}/musl\""
     [target.x86_64-linux-ohos.bin-dependencies]
-      path-option = [ "${X86_64_OHOS_LIBS}", "${X86_64_OHOS_MACRO_LIBS}", "${CANGJIE_STDX_PATH}/linux_ohos_x86_64_llvm/dynamic/stdx" ]
+      path-option = [ "${X86_64_OHOS_LIBS}", "${X86_64_OHOS_MACRO_LIBS}"]
   [target.x86_64-unknown-windows-gnu]
     [target.x86_64-unknown-windows-gnu.bin-dependencies]
-      path-option = [ "${X86_64_LIBS}", "${X86_64_MACRO_LIBS}", "${CANGJIE_STDX_PATH}/windows_x86_64_llvm/dynamic/stdx" ]
+      path-option = [ "${X86_64_LIBS}", "${X86_64_MACRO_LIBS}"]
   [target.x86_64-unknown-linux-gnu]
     [target.x86_64-unknown-linux-gnu.bin-dependencies]
-      path-option = [ "${CANGJIE_STDX_PATH}/linux_x86_64_llvm/dynamic/stdx" ]
+      path-option = []
   [target.x86_64-w64-mingw32]
     [target.x86_64-w64-mingw32.bin-dependencies]
-      path-option = [ "${CANGJIE_STDX_PATH}/windows_x86_64_llvm/dynamic/stdx" ]
+      path-option = []
 
 [dependencies]
 
 [package]
-  cjc-version = "1.0.0"
-  compile-option = "-O2"
+  cjc-version = "1.1.0"
+  compile-option = "-O2 -Woff unused"
   description = "Concise Binary Object Representation (CBOR)"
   link-option = ""
   name = "cbor4cj"
+  organization = "cangjie_tpc"
   output-type = "dynamic"
-  src-dir = ""
+  src-dir = ["src","CHANGELOG.md"]
   target-dir = ""
-  version = "1.0.1"
-  package-configuration = {}
+  version = "1.0.2"
+  repository = "https://gitcode.com/Cangjie-TPC/cbor4cj"
+  homepage = "https://gitcode.com/Cangjie-TPC/cbor4cj"
+  documentation = "https://gitcode.com/Cangjie-TPC/cbor4cj/blob/develop/doc/feature_api.md"
+  category = ["Utility"]
+  license = ["Apache-2.0"]
+  
