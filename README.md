@@ -3,9 +3,9 @@
 </div>
 
 <p align="center">
-<img alt="" src="https://img.shields.io/badge/release-v1.0.1-brightgreen" style="display: inline-block;" />
+<img alt="" src="https://img.shields.io/badge/release-v1.0.2-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/build-pass-brightgreen" style="display: inline-block;" />
-<img alt="" src="https://img.shields.io/badge/cjc-v1.0.0-brightgreen" style="display: inline-block;" />
+<img alt="" src="https://img.shields.io/badge/cjc-v1.2.0-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/cjcov-91.2%25-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/project-open-brightgreen" style="display: inline-block;" />
 </p>
@@ -67,7 +67,7 @@ public class ReadMeTest {
     @TestCase
     public func Example01Test() {
         var except: Array<Byte> = [100, 116, 101, 120, 116, 25, 4, 210, 65, 16, 130, 1, 100, 116, 101, 120, 116]
-        let baos = ByteArrayStream();
+        let baos = ByteBuffer();
         CborEncoder(baos).encode(
             CborBuilder().add("text") // add string
                 .add(1234) // add int
@@ -104,7 +104,7 @@ public class ReadMeTest2 {
     @TestCase
     public func Example02Test() {
         var except: Array<Byte> = [100, 116, 101, 120, 116, 25, 4, 210, 65, 16, 130, 1, 100, 116, 101, 120, 116]
-        let baos = ByteArrayStream();
+        let baos = ByteBuffer();
         baos.write(except)
         var dataItems: LinkedList<DataItem> = CborDecoder(baos).decode();
         @Assert(dataItems.size,4)
@@ -148,7 +148,7 @@ import std.math.numeric.BigInt
 public class ReadMeTest3 {
     @TestCase
     public func Example03Test() {
-        let baos = ByteArrayStream();
+        let baos = ByteBuffer();
         CborEncoder(baos).encode(CborBuilder().add(666).add("666").build());
         CborDecoder(baos).decode(impleDataItemListener())
     }
@@ -181,7 +181,7 @@ class impleDataItemListener <: DataItemListener {
 
 在下述版本验证通过：
 
-    Cangjie Version: 1.0.0
+    Cangjie Version: 1.2.0
 
 ## 开源协议
 
